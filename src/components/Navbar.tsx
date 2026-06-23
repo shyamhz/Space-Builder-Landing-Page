@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from 'next/image'
+import Link from 'next/link'
+
 const navLinks = [
     { label: "Services", href: "#services" },
     { label: "Works", href: "#works" },
@@ -33,7 +35,7 @@ export default function Navbar() {
                     }`}
             >
                 <div className="px-6 flex items-center justify-between">
-                    <a href="#" className="flex items-center gap-2.5">
+                    <Link href="/" className="flex items-center gap-2.5">
                         <Image
                             src="/brand.png"
                             width={50}
@@ -48,17 +50,17 @@ export default function Navbar() {
                         >
                             Space<span className={isOpen ? "text-black/70 font-semibold" : "text-accent"}>Builder</span>
                         </span>
-                    </a>
+                    </Link>
 
                     {/* Navbar Controls Group */}
                     <div className="flex items-center gap-4">
                         {/* Book Free Call Button */}
-                        <a
+                        <Link
                             href="/call"
                             className={`inline-flex items-center justify-center h-12 shrink-0 rounded-full text-lg font-semibold uppercase tracking-wider transition-all duration-200 ${isOpen ? "bg-black text-[#C8A84E] hover:bg-black/90" : "bg-gradient-to-b from-[#E8E4DD] via-white to-[#C8A84E] text-black hover:brightness-110"
                                 }`}
                             style={{ fontFamily: "var(--font-space-grotesk)", paddingLeft: "40px", paddingRight: "40px" }}
-                        >Book Free Call</a>
+                        >Book Free Call</Link>
 
                         {/* Hamburger Button */}
                         <button
