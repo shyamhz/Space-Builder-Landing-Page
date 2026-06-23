@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 const navLinks = [
@@ -14,10 +14,25 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerRef = useRef<HTMLButtonElement>(null);
     const [clipPathOrigin, setClipPathOrigin] = useState("calc(100% - 3.5rem) 2.75rem");
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <>
-            <header className="fixed top-3 left-1/2 -translate-x-1/2 w-full max-w-[1300px] z-[60] py-6">
+            <header
+                className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1300px] z-[60] transition-all duration-300 ${
+                    scrolled && !isOpen
+                        ? "bg-surface/65 bg-gradient-to-r from-[#e4c585]/10 to-[#c69a4e]/5 backdrop-blur-md border border-[#e4c585]/25 shadow-lg shadow-black/20 py-3 rounded-full"
+                        : "border-transparent py-4 bg-transparent rounded-2xl"
+                }`}
+            >
                 <div className="px-6 flex items-center justify-between">
                     <a href="#" className="flex items-center gap-2.5">
                         <svg
