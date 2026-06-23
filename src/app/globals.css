@@ -1,15 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: #000000;
-  --color-foreground: #E8E4DD;
-  --color-muted: #8A8680;
-  --color-accent: #C8A84E;
-  --color-surface: #111113;
-  --color-border: #1E1E21;
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-serif: var(--font-serif);
+:root {
+  --background: #08080a;
+  --bg: #08080a;
+  --bg-soft: #0c0c0f;
+  --surface: #111114;
+  --surface-2: #16161a;
+  --foreground: #f4f1ea;
+  --fg: #f4f1ea;
+  --fg-muted: #918d83;
+  --fg-dim: #5d5a52;
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.13);
+
+  --gold-1: #f7e9c8;
+  --gold-2: #e4c585;
+  --gold-3: #c69a4e;
+
+  --blue: #3168ff;
+  --blue-soft: #6f9bff;
+
+  --accent: #e4c585;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+@theme {
+  --color-background: #08080a;
+  --color-bg: #08080a;
+  --color-bg-soft: #0c0c0f;
+  --color-surface: #111114;
+  --color-surface-2: #16161a;
+  --color-foreground: #f4f1ea;
+  --color-fg: #f4f1ea;
+  --color-fg-muted: #918d83;
+  --color-fg-dim: #5d5a52;
+  --color-line: rgba(255, 255, 255, 0.07);
+  --color-line-strong: rgba(255, 255, 255, 0.13);
+
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+
+  --color-gold-1: #f7e9c8;
+  --color-gold-2: #e4c585;
+  --color-gold-3: #c69a4e;
+
+  --color-blue: #3168ff;
+  --color-blue-soft: #6f9bff;
+
+  --font-display: "Bricolage Grotesque", var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: "Inter", var(--font-body), system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+
+  --animate-flip-in: flip-in 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee-y: marquee-y 32s linear infinite;
+  --animate-aurora-drift: aurora-drift 12s ease-in-out infinite;
+
+  @keyframes flip-in {
+    0% { transform: translateY(108%); opacity: 0; }
+    60% { opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes fade-up {
+    0% { transform: translateY(18px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes marquee-y {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  @keyframes aurora-drift {
+    0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.85; }
+    50% { transform: translate(-46%, -4%) scale(1.12); opacity: 1; }
+  }
 }
 
 /* Custom Cursor & Grid Utilities */
@@ -36,11 +100,7 @@ html.custom-cursor-active * {
   pointer-events: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 html {
   scroll-behavior: smooth;
@@ -81,4 +141,9 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+.bg-dotgrid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
 }

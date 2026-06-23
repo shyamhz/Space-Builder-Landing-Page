@@ -17,8 +17,8 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-[1300px] z-[60] py-6">
-                <div className="px-6 sm:px-20 flex items-center justify-between">
+            <header className="fixed top-3 left-1/2 -translate-x-1/2 w-full max-w-[1300px] z-[60] py-6">
+                <div className="px-6 flex items-center justify-between">
                     <a href="#" className="flex items-center gap-2.5">
                         <svg
                             width="28"
@@ -37,9 +37,8 @@ export default function Navbar() {
                             <circle cx="16" cy="15" r="3" fill={isOpen ? "#000000" : "#C8A84E"} className="transition-colors duration-200" />
                         </svg>
                         <span
-                            className={`text-2xl font-semibold tracking-tight transition-colors duration-200 ${
-                                isOpen ? "text-black" : "text-foreground"
-                            }`}
+                            className={`text-2xl font-semibold tracking-tight transition-colors duration-200 ${isOpen ? "text-black" : "text-foreground"
+                                }`}
                             style={{ fontFamily: "var(--font-space-grotesk)" }}
                         >
                             Space<span className={isOpen ? "text-black/70 font-semibold" : "text-accent"}>Builder</span>
@@ -51,9 +50,8 @@ export default function Navbar() {
                         {/* Book Free Call Button */}
                         <a
                             href="#cta"
-                            className={`inline-flex items-center justify-center h-12 shrink-0 rounded-full text-lg font-semibold uppercase tracking-wider transition-all duration-200 ${
-                                isOpen ? "bg-black text-[#C8A84E] hover:bg-black/90" : "bg-[#C8A84E] text-black hover:bg-[#b0923d]"
-                            }`}
+                            className={`inline-flex items-center justify-center h-12 shrink-0 rounded-full text-lg font-semibold uppercase tracking-wider transition-all duration-200 ${isOpen ? "bg-black text-[#C8A84E] hover:bg-black/90" : "bg-gradient-to-b from-[#E8E4DD] via-white to-[#C8A84E] text-black hover:brightness-110"
+                                }`}
                             style={{ fontFamily: "var(--font-space-grotesk)", paddingLeft: "40px", paddingRight: "40px" }}
                         >Book Free Call</a>
 
@@ -69,11 +67,10 @@ export default function Navbar() {
                                 }
                                 setIsOpen((prev) => !prev);
                             }}
-                            className={`flex items-center justify-center w-12 h-12 rounded-full border transition-colors duration-200 ${
-                                isOpen
-                                    ? "bg-black/5 border-black/25 hover:bg-black/10"
-                                    : "bg-foreground/5 border-border backdrop-blur-sm hover:bg-foreground/10"
-                            }`}
+                            className={`flex items-center justify-center w-12 h-12 rounded-full border transition-colors duration-200 ${isOpen
+                                ? "bg-black/5 border-black/25 hover:bg-black/10"
+                                : "bg-foreground/5 border-border backdrop-blur-sm hover:bg-foreground/10"
+                                }`}
                             aria-label={isOpen ? "Close menu" : "Open menu"}
                         >
                             <div className="relative w-5 h-4">
@@ -84,9 +81,8 @@ export default function Navbar() {
                                             : { top: "0%", rotate: 0 }
                                     }
                                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                    className={`absolute left-0 block w-5 h-[1.5px] origin-center transition-colors duration-200 ${
-                                        isOpen ? "bg-black" : "bg-foreground"
-                                    }`}
+                                    className={`absolute left-0 block w-5 h-[1.5px] origin-center transition-colors duration-200 ${isOpen ? "bg-black" : "bg-foreground"
+                                        }`}
                                     style={{ top: 0 }}
                                 />
                                 <motion.span
@@ -96,9 +92,8 @@ export default function Navbar() {
                                             : { opacity: 1, scaleX: 1 }
                                     }
                                     transition={{ duration: 0.2 }}
-                                    className={`absolute left-0 top-1/2 -translate-y-1/2 block w-3 h-[1.5px] origin-center transition-colors duration-200 ${
-                                        isOpen ? "bg-black" : "bg-foreground"
-                                    }`}
+                                    className={`absolute left-0 top-1/2 -translate-y-1/2 block w-3 h-[1.5px] origin-center transition-colors duration-200 ${isOpen ? "bg-black" : "bg-foreground"
+                                        }`}
                                 />
                                 <motion.span
                                     animate={
@@ -107,9 +102,8 @@ export default function Navbar() {
                                             : { top: "100%", rotate: 0 }
                                     }
                                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                    className={`absolute left-0 block w-5 h-[1.5px] origin-center transition-colors duration-200 ${
-                                        isOpen ? "bg-black" : "bg-foreground"
-                                    }`}
+                                    className={`absolute left-0 block w-5 h-[1.5px] origin-center transition-colors duration-200 ${isOpen ? "bg-black" : "bg-foreground"
+                                        }`}
                                     style={{ top: "100%" }}
                                 />
                             </div>
