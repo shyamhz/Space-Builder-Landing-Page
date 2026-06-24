@@ -12,7 +12,10 @@ const COLS = [
   },
   {
     title: "Legal",
-    links: ["Privacy Policy", "Terms of Service"],
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+    ],
   },
 ];
 
@@ -58,21 +61,28 @@ export default function Footer() {
                 {col.title}
               </h4>
               <ul className="mt-4 space-y-3">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-sm text-fg-muted transition-colors hover:text-fg">
-                      {l}
-                    </a>
-                  </li>
-                ))}
+                {col.links.map((l) => {
+                  const label = typeof l === "string" ? l : l.label;
+                  const href = typeof l === "string" ? "#" : l.href;
+                  return (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        className="text-sm text-fg-muted transition-colors hover:text-fg"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-line py-7 text-center sm:flex-row sm:text-left">
-          <p className="text-xs text-fg-dim">© 2026 SpaceBuilder. All rights reserved.</p>
-          <p className="text-xs text-fg-dim">Designed &amp; built to last.</p>
+          <p className="text-xs text-fg-muted">&copy; {new Date().getFullYear()} SpaceBuilder. All rights reserved.</p>
+          <p className="text-xs text-fg-muted">Designed &amp; built to last.</p>
         </div>
       </div>
     </footer>
