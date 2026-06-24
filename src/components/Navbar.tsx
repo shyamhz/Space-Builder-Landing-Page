@@ -40,7 +40,8 @@ export default function Navbar() {
                             src="/brand.png"
                             width={50}
                             height={50}
-                            className={`border bg-[${isOpen ? `#00000` : `#e4c585`}] border-[3px] rounded-[50%]`}
+
+                            className={`border border-[3px] rounded-full ${isOpen ? "bg-black" : "bg-[#e4c585]"}`}
                             alt="Picture of the author"
                         />
                         <span
