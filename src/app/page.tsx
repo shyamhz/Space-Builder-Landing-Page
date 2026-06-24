@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Offerings from "@/components/Offerings";
 import Testimonials from "@/components/Testimonials";
+import Teams from "@/components/teams";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -38,6 +39,7 @@ export default function Home() {
         <Hero />
         <Offerings />
         <Testimonials />
+        <Teams />
         <FAQ />
         <CTA />
       </main>

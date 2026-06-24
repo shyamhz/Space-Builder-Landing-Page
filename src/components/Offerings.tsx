@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { LayersArt, FlowArt, HubArt, ConsultancyArt, VibeArt, AuditArt } from "./svg";
 
 function SectionHead() {
   return (
@@ -18,130 +19,6 @@ function SectionHead() {
   );
 }
 
-/* ---------- Animated SVG illustrations ---------- */
-
-function LayersArt() {
-  return (
-    <svg viewBox="0 0 240 150" className="h-full w-full" fill="none">
-      <g strokeWidth="1.3">
-        <path d="M50 104 L120 68 L190 104 L120 140 Z" stroke="var(--gold-3)" opacity="0.3" />
-        <path d="M50 82 L120 46 L190 82 L120 118 Z" stroke="var(--gold-2)" opacity="0.5" />
-        <path d="M50 60 L120 24 L190 60 L120 96 Z" stroke="var(--gold-1)" opacity="0.95">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0 0; 0 -9; 0 0"
-            dur="3.6s"
-            repeatCount="indefinite"
-          />
-        </path>
-      </g>
-    </svg>
-  );
-}
-
-function RoadmapArt() {
-  return (
-    <svg viewBox="0 0 240 150" className="h-full w-full" fill="none">
-      <path
-        d="M30 120 C 90 120, 90 75, 150 75 S 210 30, 210 30"
-        stroke="var(--gold-2)"
-        strokeWidth="1.4"
-        strokeDasharray="4 6"
-        opacity="0.45"
-      />
-      <path
-        d="M30 120 C 90 120, 90 75, 150 75 S 210 30, 210 30"
-        stroke="var(--gold-1)"
-        strokeWidth="1.6"
-        strokeDasharray="240"
-        strokeDashoffset="240"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          values="240;0;0;240"
-          dur="5s"
-          repeatCount="indefinite"
-        />
-      </path>
-      {[
-        [30, 120],
-        [150, 75],
-        [210, 30],
-      ].map(([cx, cy], idx) => (
-        <circle key={idx} cx={cx} cy={cy} r="4.5" fill="var(--gold-1)">
-          <animate
-            attributeName="r"
-            values="4.5;6.5;4.5"
-            dur="2.2s"
-            begin={`${idx * 0.5}s`}
-            repeatCount="indefinite"
-          />
-        </circle>
-      ))}
-    </svg>
-  );
-}
-
-function FlowArt() {
-  return (
-    <svg viewBox="0 0 240 150" className="h-full w-full" fill="none">
-      <g stroke="var(--line-strong)" strokeWidth="1.2">
-        <rect x="26" y="62" width="46" height="26" rx="6" />
-        <rect x="168" y="40" width="46" height="26" rx="6" />
-        <rect x="168" y="84" width="46" height="26" rx="6" />
-        <path d="M72 75 H120 M120 75 V53 H168 M120 75 V97 H168" />
-      </g>
-      <circle cx="120" cy="75" r="6" fill="var(--gold-2)" />
-      <circle r="4" fill="var(--gold-1)">
-        <animateMotion dur="2.6s" repeatCount="indefinite" path="M72 75 H120 V53 H168" />
-      </circle>
-      <circle r="4" fill="var(--gold-1)">
-        <animateMotion
-          dur="2.6s"
-          begin="1.3s"
-          repeatCount="indefinite"
-          path="M72 75 H120 V97 H168"
-        />
-      </circle>
-    </svg>
-  );
-}
-
-const HUB_NODES: [number, number][] = [
-  [162, 75],
-  [141, 111.37],
-  [99, 111.37],
-  [78, 75],
-  [99, 38.63],
-  [141, 38.63],
-];
-
-function HubArt() {
-  return (
-    <svg viewBox="0 0 240 150" className="h-full w-full" fill="none">
-      <circle cx="120" cy="75" r="42" stroke="var(--line-strong)" strokeWidth="1.2" />
-      <circle cx="120" cy="75" r="9" fill="var(--gold-2)" />
-      <g>
-        {HUB_NODES.map(([x, y], i) => (
-          <g key={i}>
-            <line x1="120" y1="75" x2={x} y2={y} stroke="var(--line)" strokeWidth="1" />
-            <circle cx={x} cy={y} r="4.5" fill="var(--gold-1)" opacity="0.9" />
-          </g>
-        ))}
-        <animateTransform
-          attributeName="transform"
-          type="rotate"
-          from="0 120 75"
-          to="360 120 75"
-          dur="18s"
-          repeatCount="indefinite"
-        />
-      </g>
-    </svg>
-  );
-}
-
 interface Card {
   tag: string;
   title: string;
@@ -157,10 +34,10 @@ const CARDS: Card[] = [
     art: <LayersArt />,
   },
   {
-    tag: "AI consultation",
+    tag: "1:1 consultancy",
     title: "Your AI roadmap, built for results",
     desc: "Not sure where AI fits? We help you find the high-impact opportunities and create a clear plan tailored to your organisation.",
-    art: <RoadmapArt />,
+    art: <ConsultancyArt />,
   },
   {
     tag: "Automation",
@@ -173,6 +50,18 @@ const CARDS: Card[] = [
     title: "Connect everything, miss nothing",
     desc: "From data processing to decision-making, we engineer end-to-end workflows that connect your tools, teams, and people into one system.",
     art: <HubArt />,
+  },
+  {
+    tag: "Vibe Code Fixing",
+    title: "Codebases that feel right",
+    desc: "We jump into your repository, clean up technical debt, and align your code with best practices, keeping your team's development momentum fast.",
+    art: <VibeArt />,
+  },
+  {
+    tag: "Workflow audit",
+    title: "Understand our business and add Automation",
+    desc: "We audit your manual workflows, shadow your team, and build custom software integrations tailored specifically to your unique business logic.",
+    art: <AuditArt />,
   },
 ];
 
@@ -188,8 +77,8 @@ export default function Offerings() {
             className="group rounded-3xl border border-line bg-surface/60 p-7 transition-colors hover:border-line-strong"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
-            <div className="flex h-40 items-center justify-center rounded-2xl border border-line bg-bg-soft/70">
-              <div className="h-28 w-44">{c.art}</div>
+            <div className="flex h-56 items-center justify-center rounded-2xl border border-line bg-bg-soft/70 overflow-hidden">
+              <div className="w-full h-full max-w-[340px] px-4 py-3">{c.art}</div>
             </div>
             <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.2em] text-gold-2">
               {c.tag}
