@@ -22,15 +22,19 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-5xl text-center">
         <span
-          className="relative overflow-hidden animate-fade-up inline-flex items-center gap-2.5 rounded-full border border-line-strong bg-surface/60 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-fg-muted
+          className="relative overflow-hidden animate-fade-up inline-flex items-center gap-3 rounded-full border border-gold-3/30 bg-surface/60 px-4 py-1.5 text-[11px] font-medium tracking-wide text-fg-muted
          after:absolute after:inset-0 after:content-['']
          after:-translate-x-full
          after:bg-[linear-gradient(90deg,transparent_40%,color-mix(in_srgb,var(--gold-1)_15%,transparent)_47%,color-mix(in_srgb,var(--gold-3)_50%,transparent)_50%,color-mix(in_srgb,var(--gold-1)_15%,transparent)_53%,transparent_60%)]
          after:animate-shimmer"
           style={{ animationDelay: "0ms" }}
         >
-          <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--gold-2)" }} />
-          AI-driven build studio
+          <span className="h-2 w-2 rounded-full bg-gradient-to-tr from-gold-3 to-gold-1 shadow-[0_0_8px_rgba(228,197,133,0.6)]" />
+          <span>On-Time Delivery</span>
+          <span className="text-gold-2 font-bold opacity-60">•</span>
+          <span>Clean &amp; Scalable Code</span>
+          <span className="text-gold-2 font-bold opacity-60">•</span>
+          <span>Growth Focused</span>
         </span>
 
         <h1 className="mt-8 font-display text-[12vw] sm:text-7xl md:text-8xl lg:text-[8.5rem] font-semibold leading-[0.92] tracking-tight flex flex-wrap items-center justify-center gap-x-3 md:gap-x-4">

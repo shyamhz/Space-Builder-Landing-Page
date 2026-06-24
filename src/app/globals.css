@@ -186,8 +186,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-background);
+  background: var(--color-gold-2);
+  color: var(--color-bg);
 }
 
 ::-webkit-scrollbar {
