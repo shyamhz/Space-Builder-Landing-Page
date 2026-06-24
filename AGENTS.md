@@ -13,4 +13,17 @@ This version has breaking changes - APIs, conventions, and file structure may al
 - Type checking: `npm run typecheck`
 - Pre-commit hooks run typecheck, lint, and format automatically
 - Commit messages follow Conventional Commits via commitlint
-- **Always run `npm run build` before deploying to production** — `tsc --noEmit` can miss build-time errors that only surface during `next build`
+- **Always run `npm run build` before deploying to production** - `tsc --noEmit` can miss build-time errors that only surface during `next build`
+
+## Team & Contact
+
+- **Team**: Atharv (dange), Pallab, Shyam, Pritam
+- **Official emails**:
+  - `atharvdange@spacebuilder.in` - Atharv
+  - `contact@spacebuilder.in` - General contact
+  - `help@spacebuilder.in` - Support
+  - `socials@spacebuilder.in` - Socials
+  - `pallabdev@spacebuilder.in` - Pallab
+  - `shyamhz@spacebuilder.in` - Shyam
+  - `pritam@spacebuilder.in` - Pritam
+- **Domain**: spacebuilder.in
