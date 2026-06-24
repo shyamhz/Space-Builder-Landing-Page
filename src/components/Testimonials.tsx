@@ -80,10 +80,7 @@ function Column({ items, reverse, dur }: { items: Quote[]; reverse?: boolean; du
         }}
       >
         {loop.map((q, i) => (
-          <>
-            {/* eslint-disable-next-line react-doctor/no-array-index-as-key -- append-only marquee, never reordered/filtered */}
-            <Card key={i} q={q} />
-          </>
+          <Card key={i} q={q} />
         ))}
       </div>
     </div>
