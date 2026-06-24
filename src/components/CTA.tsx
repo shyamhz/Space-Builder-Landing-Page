@@ -11,7 +11,7 @@ export default function CTA() {
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(49,104,255,0.55), rgba(49,104,255,0.12) 45%, transparent 70%)",
-            filter: "blur(36px)",
+            filter: "blur(8px)",
           }}
         />
         <div
