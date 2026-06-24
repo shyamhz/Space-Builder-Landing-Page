@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { LazyMotion, m, AnimatePresence, domAnimation } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,21 +15,19 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
-  const [clipPathOrigin, setClipPathOrigin] = useState(
-    "calc(100% - 3.5rem) 2.75rem",
-  );
+  const [clipPathOrigin, setClipPathOrigin] = useState("calc(100% - 3.5rem) 2.75rem");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       <header
         className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1300px] z-[60] transition-all duration-300 ${
           scrolled && !isOpen
@@ -53,11 +51,7 @@ export default function Navbar() {
               style={{ fontFamily: "var(--font-space-grotesk)" }}
             >
               Space
-              <span
-                className={
-                  isOpen ? "text-black/70 font-semibold" : "text-accent"
-                }
-              >
+              <span className={isOpen ? "text-black/70 font-semibold" : "text-accent"}>
                 Builder
               </span>
             </span>
@@ -83,6 +77,7 @@ export default function Navbar() {
             </Link>
 
             <button
+              type="button"
               ref={hamburgerRef}
               onClick={() => {
                 if (hamburgerRef.current) {
@@ -101,35 +96,23 @@ export default function Navbar() {
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <div className="relative w-5 h-4">
-                <motion.span
-                  animate={
-                    isOpen
-                      ? { top: "50%", rotate: 45 }
-                      : { top: "0%", rotate: 0 }
-                  }
+                <m.span
+                  animate={isOpen ? { top: "50%", rotate: 45 } : { top: "0%", rotate: 0 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className={`absolute left-0 block w-5 h-[1.5px] origin-center transition-colors duration-200 ${
                     isOpen ? "bg-black" : "bg-white/50"
                   }`}
                   style={{ top: 0 }}
                 />
-                <motion.span
-                  animate={
-                    isOpen
-                      ? { opacity: 0, scaleX: 0 }
-                      : { opacity: 1, scaleX: 1 }
-                  }
+                <m.span
+                  animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.2 }}
                   className={`absolute left-0 top-1/2 -translate-y-1/2 block w-3 h-[1.5px] origin-center transition-colors duration-200 ${
                     isOpen ? "bg-black" : "bg-white/50"
                   }`}
                 />
-                <motion.span
-                  animate={
-                    isOpen
-                      ? { top: "50%", rotate: -45 }
-                      : { top: "100%", rotate: 0 }
-                  }
+                <m.span
+                  animate={isOpen ? { top: "50%", rotate: -45 } : { top: "100%", rotate: 0 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className={`absolute left-0 block w-5 h-[1.5px] origin-center transition-colors duration-200 ${
                     isOpen ? "bg-black" : "bg-white/50"
@@ -144,7 +127,7 @@ export default function Navbar() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ clipPath: `circle(0% at ${clipPathOrigin})` }}
             animate={{ clipPath: `circle(150% at ${clipPathOrigin})` }}
             exit={{ clipPath: `circle(0% at ${clipPathOrigin})` }}
@@ -153,7 +136,7 @@ export default function Navbar() {
           >
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
-                <motion.a
+                <m.a
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
@@ -169,12 +152,12 @@ export default function Navbar() {
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
                   {link.label}
-                </motion.a>
+                </m.a>
               ))}
             </nav>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }

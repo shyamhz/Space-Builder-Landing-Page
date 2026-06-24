@@ -105,7 +105,7 @@ export default function CallPage() {
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(228,197,133,0.07), transparent 70%)",
-            filter: "blur(18px)",
+            filter: "blur(8px)",
           }}
         />
 
@@ -152,6 +152,7 @@ export default function CallPage() {
                       Return Home
                     </Link>
                     <button
+                      type="button"
                       onClick={() => setSubmitStatus(null)}
                       className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium text-bg hover:brightness-110 transition-all font-display"
                       style={{

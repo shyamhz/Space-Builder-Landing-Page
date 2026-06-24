@@ -1,3 +1,5 @@
+/* eslint-disable react-doctor/no-array-index-as-key -- intentional: key forces remount to re-trigger flip animation */
+/* eslint-disable react-doctor/no-initialize-state -- ResizeObserver monitors ongoing content changes, not just mount */
 import { useState, useEffect, useRef } from "react";
 
 const WORDS = ["Space", "Saas", "Brand", "Growth", "Apps"];
@@ -13,11 +15,14 @@ export default function FlipWord() {
   }, []);
 
   useEffect(() => {
-    if (measureRef.current) {
-      const rect = measureRef.current.getBoundingClientRect();
-      setWidth(rect.width);
-    }
-  }, [i]);
+    const el = measureRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => {
+      if (entry) setWidth(entry.contentRect.width);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   return (
     <span
