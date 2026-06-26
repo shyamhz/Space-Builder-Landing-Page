@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus, Minus, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 interface QA {
   q: string;
@@ -47,13 +48,13 @@ export default function FAQ() {
           <p className="mt-5 max-w-sm text-base leading-relaxed text-fg-muted">
             Still curious about something we didn't cover?
           </p>
-          <a
-            href="#cta"
+          <Link
+            href="/call"
             className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-gold-2 transition-colors hover:text-gold-1"
           >
             Book a call
             <ArrowUpRight size={15} strokeWidth={2} />
-          </a>
+          </Link>
         </div>
 
         <div className="divide-y divide-line border-y border-line">

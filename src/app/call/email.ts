@@ -2,11 +2,13 @@ export function getEmailTemplate({
   userName,
   userEmail,
   userNumber,
+  socialLink,
   userQuery,
 }: {
   userName: string;
   userEmail: string;
   userNumber: string;
+  socialLink?: string;
   userQuery: string;
 }) {
   return `<!DOCTYPE html>
@@ -86,6 +88,22 @@ export function getEmailTemplate({
                                         ${userNumber}
                                     </td>
                                 </tr>
+
+                                <!-- Social Link Row -->
+                                ${
+                                  socialLink
+                                    ? `
+                                <tr>
+                                    <td width="100" style="padding: 10px 0; border-bottom: 1px solid #f4f4f5; font-weight: 600; color: #09090b;">
+                                        Social Link:
+                                    </td>
+                                    <td style="padding: 10px 0; border-bottom: 1px solid #f4f4f5;">
+                                        ${socialLink}
+                                    </td>
+                                </tr>
+                                `
+                                    : ""
+                                }
                             </table>
 
                             <!-- Query Section -->

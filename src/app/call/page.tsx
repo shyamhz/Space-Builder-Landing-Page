@@ -13,6 +13,7 @@ export default function CallPage() {
     name: "",
     email: "",
     mobile: "",
+    socialLink: "",
     message: "",
   });
 
@@ -57,7 +58,7 @@ export default function CallPage() {
     try {
       const res = await sendEmailAction(result.data);
       if (res.success) {
-        console.log("Email sent successfully via Resend:", res.data);
+        console.log("Email sent successfully via Resend");
         setSubmitStatus({
           success: true,
           message: "Your query has been sent successfully. We will get in touch with you shortly!",
@@ -66,6 +67,7 @@ export default function CallPage() {
           name: "",
           email: "",
           mobile: "",
+          socialLink: "",
           message: "",
         });
       } else {
@@ -236,6 +238,29 @@ export default function CallPage() {
                     />
                     {errors.mobile && (
                       <p className="text-xs text-red-400 mt-1 font-medium">{errors.mobile}</p>
+                    )}
+                  </div>
+
+                  {/* Social Link */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="socialLink"
+                      className="block text-xs uppercase tracking-[0.14em] text-fg-muted font-medium"
+                    >
+                      Social Link
+                    </label>
+                    <input
+                      type="text"
+                      id="socialLink"
+                      name="socialLink"
+                      placeholder="Discord or X Handle"
+                      value={formData.socialLink || ""}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className={`w-full rounded-xl border ${errors.socialLink ? "border-red-500/40 focus:border-red-500" : "border-line focus:border-gold-2"} bg-surface/40 hover:bg-surface/65 px-4 py-3 text-sm text-fg placeholder:text-fg-dim outline-none transition-all`}
+                    />
+                    {errors.socialLink && (
+                      <p className="text-xs text-red-400 mt-1 font-medium">{errors.socialLink}</p>
                     )}
                   </div>
 
