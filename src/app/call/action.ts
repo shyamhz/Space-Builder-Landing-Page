@@ -8,6 +8,7 @@ import { contacts } from "@/db/schema";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// eslint-disable-next-line react-doctor/server-auth-actions -- public contact form, no auth needed
 export async function sendEmailAction(data: {
   name: string;
   email: string;
