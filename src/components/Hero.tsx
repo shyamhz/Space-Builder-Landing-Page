@@ -54,8 +54,7 @@ export default function Hero() {
           style={{ animationDelay: "220ms" }}
         >
           SpaceBuilder helps you build <span className="text-fg">businesses</span> - not just
-          websites. We design the AI systems, automations, and software that move your company
-          forward.
+          websites. We design AI systems, automations, and software that move your company forward.
         </p>
 
         <div
