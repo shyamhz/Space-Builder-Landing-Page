@@ -38,7 +38,7 @@ export async function sendEmailAction(data: {
       message,
     });
   } catch (dbErr: any) {
-    console.error("DB insertion error:", dbErr);
+    console.error("DB Operation error:", dbErr);
     return {
       success: false,
       error: dbErr?.message || "Failed to store user details in database.",
