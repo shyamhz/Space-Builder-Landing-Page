@@ -12,6 +12,7 @@ export const contactFormSchema = z.object({
     .trim()
     .min(10, "Mobile number must be at least 10 digits")
     .max(15, "Mobile number must be under 15 digits"),
+  socialLink: z.string().trim().optional(),
   message: z
     .string()
     .trim()

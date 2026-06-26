@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { RichText } from "../rich-text";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions - SpaceBuilder",
@@ -156,7 +155,7 @@ We prefer to resolve issues through conversation. Legal action is always a last 
     title: "16. Contact",
     content: `For questions about these Terms, contact us at:
 
-- **Email:** [contact@spacebuilder.in](mailto:contact@spacebuilder.in)
+- **Email:** <a href="mailto:contact@spacebuilder.in" className="text-gold-2 underline underline-offset-2 hover:text-gold-1 transition-colors">contact@spacebuilder.in</a>
 - **Website:** [spacebuilder.in](/)
 
 We aim to respond within **5 business days**.`,
@@ -188,8 +187,29 @@ export default function TermsPage() {
                 <h2 className="font-display text-xl font-semibold tracking-tight text-fg">
                   {section.title}
                 </h2>
-                <div className="mt-3 space-y-4 text-sm leading-relaxed text-fg-muted">
-                  <RichText text={section.content} />
+                <div className="mt-3 space-y-4">
+                  {section.content.split("\n\n").map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-sm leading-relaxed text-fg-muted"
+                      dangerouslySetInnerHTML={{
+                        __html: paragraph
+                          .replace(
+                            /\*\*(.*?)\*\*/g,
+                            '<strong class="font-medium text-fg">$1</strong>',
+                          )
+                          .replace(
+                            /\[(.*?)\]\((.*?)\)/g,
+                            '<a href="$2" class="text-gold-2 underline underline-offset-2 hover:text-gold-1 transition-colors">$1</a>',
+                          )
+                          .replace(
+                            /- \*\*(.*?)\*\* - (.*?)(?=\n|$)/g,
+                            '<li class="ml-4 list-disc"><strong class="font-medium text-fg">$1</strong> - $2</li>',
+                          )
+                          .replace(/- (.*?)(?=\n|$)/g, '<li class="ml-4 list-disc">$1</li>'),
+                      }}
+                    />
+                  ))}
                 </div>
               </section>
             ))}
